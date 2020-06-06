@@ -1,19 +1,16 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import TweetsShell from "./Tweets/containers/TweetsShell";
-import {Divider, Layout, Menu} from "antd";
+import {Layout, Menu} from "antd";
 import { UserOutlined } from '@ant-design/icons';
 import {connect, MapDispatchToProps} from "react-redux";
 import {loadTweets} from "./store/actions/tweets.actions";
 
-const { Header, Content, Footer, Sider } = Layout;
+const {Content, Sider } = Layout;
 
 interface ITwitterAccounts {
     name: string;
     screenName: string;
-}
-interface IAppProps {
-    screenName: string
 }
 
 function App(props: any) {
@@ -36,6 +33,7 @@ function App(props: any) {
 
   return (
       <Layout>
+
           <Sider
               breakpoint="lg"
               collapsedWidth="0"
@@ -49,21 +47,30 @@ function App(props: any) {
               <div className="logo">
                   <img src="./twitter.png" width="50"/>
               </div>
+
               <Menu theme="dark" mode="inline"
                     selectedKeys={[props.screenName]}
                     onSelect={screenNameSelected}>
+
                   {twitterAccounts.map((acc: ITwitterAccounts, i: number) => (
                       <Menu.Item key={acc.screenName} icon={<UserOutlined />}>
                           {acc.name}
                       </Menu.Item>
                   ))}
+
               </Menu>
           </Sider>
+
           <Layout>
+
               <Content style={{ margin: '24px 16px 0' }}>
+
                   <TweetsShell></TweetsShell>
+
               </Content>
+
           </Layout>
+
       </Layout>
   );
 }
