@@ -14,12 +14,14 @@ interface ITweetsState {
     selectedTwitterAccount: string;
     isLoading: boolean;
     tweets: IAllTweets;
+    hasError: boolean;
 }
 
 const initialState: ITweetsState = {
     selectedTwitterAccount: '',
     isLoading: true,
-    tweets: {}
+    tweets: {},
+    hasError: false
 };
 
 export default function tweetsReducer(state = initialState, action: AnyAction): ITweetsState {
@@ -40,11 +42,16 @@ export default function tweetsReducer(state = initialState, action: AnyAction): 
                     ...state.tweets,
                     [state.selectedTwitterAccount]: action.payload
                 },
-                isLoading: false
+                isLoading: false,
+                hasError: false
             };
 
         case LOAD_TWEETS_FAIL:
-            return initialState;
+            return {
+                ...state,
+                isLoading: false,
+                hasError: true
+            };
 
         default:
             return state;
