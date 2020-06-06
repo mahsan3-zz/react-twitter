@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {loadTweets} from "../../store/actions/tweets.actions";
 import {connect, MapDispatchToProps} from "react-redux";
-import {Divider, Spin} from "antd";
+import {Alert, Divider, Spin} from "antd";
 import TweetCard, { ITweetCard } from "../components/TweetCard";
 import TwitterUserHeader, {ITwitterUserInfo} from "../components/TwitterUserHeader";
 
@@ -12,7 +12,9 @@ function TweetsShell(props: any) {
         return (
             <Spin size="large" />
         );
-    }else {
+    }else if(props.hasError) {
+        return (<Alert type="error" message="Could not display tweets at this time, please try again at a later time" banner />);
+    } else {
         return (
             <div>
 
@@ -69,7 +71,8 @@ function mapStateToProps(state: any) {
         tweets: getTweetsForAccount(state),
         screenName: state.tweets.selectedTwitterAccount,
         loadingTweets: state.tweets.isLoading,
-        accountInfo: getTwitterAccountInfo(state)
+        accountInfo: getTwitterAccountInfo(state),
+        hasError: state.tweets.hasError
     }
 }
 
