@@ -10,12 +10,12 @@ export const userTweetsApi = async(screenName: string) => {
                 'Authorization': `Bearer ${bearerToken}`
             }
         });
+        // TODO: should probably check status code of response as well
         return await response.json();
 
     } catch (e) {
 
-        console.log('We had an error...');
-        console.log(e);
+        throw new Error(e);
 
     }
 }
