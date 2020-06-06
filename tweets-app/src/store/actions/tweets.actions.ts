@@ -19,6 +19,7 @@ export const loadTweetsSuccess = (tweets: any) => ({
     payload: tweets
 });
 
-export const loadTweetsFail = () => ({
-    type: LOAD_TWEETS_FAIL
+export const loadTweetsFail = (e: any) => ({
+    type: LOAD_TWEETS_FAIL,
+    payload: e
 });
