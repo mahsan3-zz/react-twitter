@@ -15,7 +15,8 @@ function TweetCard(props: ITweetCard) {
         <Card bordered={false} style={{ marginBottom: 15 }}>
             <p>{props.text}</p>
             <p style={{ margin: 0, textAlign: "right" }}>
-                <Moment format="DD MM YYYY hh:mm:ss">
+                Posted:
+                <Moment format="DD-MM-YYYY hh:mm">
                     {props.createdAt}
                 </Moment>
             </p>
