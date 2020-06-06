@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {loadTweets} from "../../store/actions/tweets.actions";
-import {connect, DispatchProp, MapDispatchToProps} from "react-redux";
+import {connect, MapDispatchToProps} from "react-redux";
 import {Divider, Spin} from "antd";
 import TweetCard, { ITweetCard } from "../components/TweetCard";
 import TwitterUserHeader, {ITwitterUserInfo} from "../components/TwitterUserHeader";
@@ -15,11 +15,15 @@ function TweetsShell(props: any) {
     }else {
         return (
             <div>
+
                 { props.accountInfo ? <TwitterUserHeader {...props.accountInfo} /> : null }
+
                 <Divider>Latest Tweets</Divider>
+
                 {props.tweets.map((t: ITweetCard, i: number) => (
                     <TweetCard key={i} {...t} />
                 ))}
+
             </div>
 
         );
