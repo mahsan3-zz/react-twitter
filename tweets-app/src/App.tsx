@@ -65,7 +65,7 @@ function App(props: any) {
 
               <Content style={{ margin: '24px 16px 0' }}>
 
-                  <TweetsShell></TweetsShell>
+                  <TweetsShell />
 
               </Content>
 
