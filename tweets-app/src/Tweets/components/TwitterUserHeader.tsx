@@ -13,7 +13,7 @@ function TwitterUserHeader(props: ITwitterUserInfo) {
     return (
         <PageHeader
             title={props.name}
-            subTitle={props.screenName}
+            subTitle={'@' + props.screenName}
             avatar={{ src: props.profileImage }}
         >
             <p>{props.description}</p>
