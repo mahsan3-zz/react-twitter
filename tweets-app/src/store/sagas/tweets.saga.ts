@@ -7,7 +7,7 @@ function* getTweets(action: any) {
         const tweets = yield call(userTweetsApi, action.payload);
         yield put({type: LOAD_TWEETS_SUCCESS, payload: tweets});
     } catch (e) {
-        yield put({type: LOAD_TWEETS_FAIL, payload: 'Error'});
+        yield put({type: LOAD_TWEETS_FAIL, payload: e.message});
     }
 }
 
